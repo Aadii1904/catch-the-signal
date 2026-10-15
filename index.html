@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Catch the signal</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game">
+      <h1>Catch the signal 📶</h1>
+
+      <!-- The scoreboard: the numbers sit in their own spans so JavaScript can change them -->
+      <p class="board">
+        Score: <span id="score">0</span>
+        <span class="divider">·</span>
+        Time: <span id="time">30</span>
+      </p>
+
+      <button id="start" class="start" type="button">Start</button>
+
+      <!-- Nine squares. Buttons can be clicked, tapped and reached with the keyboard for free -->
+      <div id="grid" class="grid">
+        <button type="button" class="cell" aria-label="Square 1"></button>
+        <button type="button" class="cell" aria-label="Square 2"></button>
+        <button type="button" class="cell" aria-label="Square 3"></button>
+        <button type="button" class="cell" aria-label="Square 4"></button>
+        <button type="button" class="cell" aria-label="Square 5"></button>
+        <button type="button" class="cell" aria-label="Square 6"></button>
+        <button type="button" class="cell" aria-label="Square 7"></button>
+        <button type="button" class="cell" aria-label="Square 8"></button>
+        <button type="button" class="cell" aria-label="Square 9"></button>
+      </div>
+    </main>
+  </body>
+</html>
