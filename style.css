@@ -56,6 +56,11 @@ h1 {
   color: var(--muted);
 }
 
+.start:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 .start {
   font: inherit;
   font-weight: 600;
@@ -88,4 +93,10 @@ h1 {
 /* The square with the signal */
 .cell.on {
   background: var(--accent);
+}
+
+.status {
+  min-height: 1.5rem;
+  margin-top: 1rem;
+  font-weight: 600;
 }
