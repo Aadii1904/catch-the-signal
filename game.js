@@ -10,6 +10,7 @@ const scoreText = document.getElementById("score");
 const timeText = document.getElementById("time");
 const startButton = document.getElementById("start");
 const statusText = document.getElementById("status");
+const bestText = document.getElementById("best");
 
 let score = 0;
 let timeLeft = ROUND_SECONDS;
@@ -17,6 +18,16 @@ let signalAt = -1; // which square (0–8) has the signal; -1 = none
 let playing = false;
 let signalTimer = null; // moves the signal every SIGNAL_MS
 let clockTimer = null; // counts down once a second
+
+// The best score is kept in the browser's storage, so it's still there next time.
+// Some places (private windows, the playground on travellingcoder.in) block storage,
+// so reading and saving are wrapped in try/catch: the game just won't remember then.
+const BEST_KEY = "catch-the-signal-best";
+let best = 0;
+try {
+  best = Number(localStorage.getItem(BEST_KEY)) || 0;
+} catch (e) {}
+bestText.textContent = best;
 
 // 2. Put the signal in a random square (never the same one twice in a row)
 function moveSignal() {
@@ -68,6 +79,16 @@ function endGame() {
   clearSignal();
   signalAt = -1;
   statusText.textContent = "Time's up! You caught " + score + (score === 1 ? " signal." : " signals.");
+
+  if (score > best) {
+    best = score;
+    bestText.textContent = best;
+    statusText.textContent += " New best! 🎉";
+    try {
+      localStorage.setItem(BEST_KEY, String(best));
+    } catch (e) {}
+  }
+
   startButton.textContent = "Play again";
   startButton.disabled = false;
 }
